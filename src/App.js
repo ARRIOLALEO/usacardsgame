@@ -39,7 +39,9 @@ function App() {
     });
  },[reset]);
 
- 
+ useEffect(()=>{
+  // see visibleImages.every((img)=> img === true)
+ },[])
   const clickHandler = (imageUrl, ind) => {
     if(nowtAllowToPlay){
       return
@@ -52,6 +54,7 @@ function App() {
       if(lastOpenPair[0].ind=== ind){
         return
       }
+      // you can count the times that you have played
       const matched = imageUrl === lastOpenPair[0].imageUrl;
       if (!matched) {
         visibleImages[ind] = true;
