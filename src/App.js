@@ -9,6 +9,7 @@ import { getImages } from "./axiosFetch";
 // [0,1,2,3,4] // [3, 1, 2, 3, 4]
 
 // pure function, testable
+const btnStyles = {"backgroundColor":"orange","color":'white','width':"200px"}
 function shuffle(ar) {
   for (let i = 0; i < ar.length; i++) {
     const temp = ar[i];
@@ -23,6 +24,7 @@ function App() {
   const [visibleImages, setVisibleImages] = useState([]);//
   const [lastOpenPair, setLastOpenPair] = useState([]);// here the index 1
   const [nowtAllowToPlay,setNotAllowToPlay] = useState(false)
+  const [reset,setReset] = useState(false)
 
   // const [counter, setCounter] = useState(0);
   // whenever your state changes it causes rerender
@@ -35,7 +37,7 @@ function App() {
       setVisibleImages(duplicateImages.map(() => false));
       setImages(duplicateImages);
     });
-  }, []);
+ },[reset]);
 
  
   const clickHandler = (imageUrl, ind) => {
@@ -87,6 +89,7 @@ function App() {
 
         {/* <pre>{JSON.stringify(visibleImages)}</pre> */}
       </div>
+      <button style={btnStyles} onClick= {()=>{setReset(!reset)}}>Reset</button>
     </div>
   );
 }
